@@ -1,4 +1,3 @@
-
 ArrayList<PVector> sinewave = new ArrayList<PVector>();
 
 float angle = 0;
@@ -11,13 +10,11 @@ final float MIDPOINTCIRCLE = 200;
 final float XMOVEMENT = 1.5;
 final int AMPLITUDE = 170;
 
-
 void setup() {
   size(1300, 900);
   background(55);
   stroke(255);
 }
-
 
 void draw() {
   background(55);
@@ -27,7 +24,6 @@ void draw() {
   x = MIDPOINTCIRCLE + xOffset; //!______________________________!
   y = sin(angle) * AMPLITUDE + height/2;
   sinewave.add(new PVector(x, y));
-
 
   // Circle, Lines and Triangle
   ellipse(MIDPOINTCIRCLE, height/2, AMPLITUDE * 2, AMPLITUDE * 2);
@@ -57,20 +53,22 @@ void draw() {
   line(0, height/2, width, height/2);
   line(MIDPOINTCIRCLE, 0, MIDPOINTCIRCLE, height);
 
-
   //Drawing of the Sinewave
   noFill();
   beginShape();
+
   for (int i = sinewave.size() - 1; i > 0; i--) {
+
     sinewave.get(i).x += XMOVEMENT;
+
     if (sinewave.get(i).x > width) {
       sinewave.remove(i);
     }
     //point(sinewave.get(i).x * 5, sinewave.get(i).y);
     //print(sinewave.get(i) + "\n\n");
     vertex(sinewave.get(i).x, sinewave.get(i).y);
-
     print(cos(angle) * AMPLITUDE + "\n\n");
   }
+
   endShape();
 }
